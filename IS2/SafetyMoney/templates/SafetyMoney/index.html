@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{%block title%}SafetyMoney {%endblock%}</title>
+	
+	{% block header %}
+
+		<link rel="stylesheet" type="text/css" href="{% static 'SafetyMoney/css/materialize.min.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'SafetyMoney/style.css' %}">
+		
+		<link rel="stylesheet" href="{% static 'SafetyMoney/icons.css' %}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	{% endblock %}
+
+
+</head>
+<body>
+	{%block sidenav%} 
+		<p>Hello World</p>
+	
+	{%endblock%}
+
+
+
+
+	{% block nav%}
+	
+    {%endblock%}
+
+	{%block section_1%}
+	
+	{%endblock%}
+		
+	{%block section_3%}	
+	
+
+	{%endblock%}
+
+	<script type="text/javascript" src="{% static 'SafetyMoney/js/jquery-2.1.1.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'SafetyMoney/js/materialize.min.js' %}"></script>
+
+	 {%block scrip_text%}
+		<script type="text/javascript">
+			
+
+			$(document).ready(function(){
+					$(".dropdown-trigger").dropdown();
+    				$('.sidenav').sidenav();
+    				$('.tabs').tabs();
+    				$('.carousel.carousel-slider').carousel({
+		    			fullWidth: true,
+		    			indicators: true
+		      			});
+
+    						});
+		</script>
+		{%endblock%}		
+</body>
+</html>

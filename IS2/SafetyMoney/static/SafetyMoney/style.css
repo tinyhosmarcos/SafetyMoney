@@ -1,0 +1,24 @@
+{% load static %}
+.nav-wrapper.este{
+  background-color:#FF652F;
+}
+.material-icons.index{
+	background-color:#FF652F;
+}
+.carousel-item{
+
+}
+.card-content{
+	background-color: #FBEEC1;
+}
+.contenedor_carousel{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+.texto_carousel{
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
