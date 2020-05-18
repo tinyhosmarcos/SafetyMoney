@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{%block title%}SafetyMoney {%endblock%}</title>
+{% block header %}
+
+		<link rel="stylesheet" type="text/css" href="{% static 'SafetyMoney/css/materialize.min.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'SafetyMoney/style.css' %}">
+		<link rel="stylesheet" href="{% static 'SafetyMoney/icons.css' %}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+{% endblock %}
+</head>
+<body>
+
+{%block sidenav%}
+{%endblock%}
+
+
+
+{%block nav%}
+	<!-- Dropdown Structure -->
+	<ul id="Contactenos" class="dropdown-content">
+		<li><a href="#!">Atencion al Cliente</a></li>
+		<li><a href="#!">Reporte de Errores</a></li>
+	</ul>
+	<ul id="Usuario" class="dropdown-content">
+		<li><a href="#!">Mi Cuenta</a></li>
+		<li><a href="{%url 'SafetyMoney:logout'%}">Cerrar Sesión</a></li>
+	</ul>
+	<nav>
+		<div class="nav-wrapper container ">
+			<a href="#!" class="brand-logo center-align ">SafetyMoney</a>
+				<ul class="right hide-on-med-and-down">
+				<li><a href="{%url 'SafetyMoney:pagina_principal'%}">Pagina Principal</a></li>
+				<li><a href="badges.html">Documentacion</a></li>
+				<li><a class="dropdown-trigger" href="#!" data-target="Contactenos">Contactenos<i class="material-icons right">arrow_drop_down</i></a></li>
+				{%if user.username%}
+				<li><a class="dropdown-trigger" href="#!" data-target="Usuario">{{user.username}}<i class="material-icons right">arrow_drop_down</i></a></li>
+				{%endif%}
+			</ul>
+		</div>
+		
+	</nav>
+{%endblock%}
+
+	{%block section_1%}
+		<a onclick="M.toast()" class="btn">Toast!</a>
+	{%endblock%}
+		
+	{%block section_3%}	
+	
+
+	{%endblock%}
+	<script type="text/javascript" src="{% static 'SafetyMoney/js/jquery-2.1.1.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'SafetyMoney/js/materialize.min.js' %}"></script>
+
+	 {%block scrip_text%}
+		<script type="text/javascript">
+			
+
+			$(document).ready(function(){
+					$(".dropdown-trigger").dropdown();
+    				$('.sidenav').sidenav();
+    				$('.slider').slider();
+    				$('.tabs').tabs();
+    				$('.carousel.carousel-slider').carousel({
+		    			fullWidth: true,
+		    			indicators: true
+		      			});
+
+    						});
+		</script>
+		{%endblock%}		
+</body>
+</html>
