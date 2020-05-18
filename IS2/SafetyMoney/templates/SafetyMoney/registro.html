@@ -14,31 +14,36 @@
 					<div class="input-field col s12">
 						<i class="material-icons prefix">assignment_ind</i>
 						{{form.username}}
+
 						<label for="{{form.username.auto_id}}">Usuario</label>
 					</div>
 					<div class="input-field col s7">
 						<i class="material-icons prefix">account_circle</i>
 						{{form.first_name}}
+
 						<label for="{{form.first_name.auto_id}}">Nombres</label>
 					</div>
 					<div class="input-field col s5">
-						
 						{{form.last_name}}
+
 						<label for="{{form.last_name.auto_id}}">Apellidos</label>
 					</div>
 					<div class="input-field col s12">
 						<i class="material-icons prefix">email</i>
 						{{form.email}}
+
 						<label for="{{form.email.auto_id}}">Correo Electronico</label>
 					</div>
 					<div class="input-field col s12">
 						<i class="material-icons prefix">vpn_key</i>
 						{{form.password1}}
+
 						<label for="{{form.password1.auto_id}}">Contraseña</label>
 					</div>
 					<div class="input-field col s12">
 						<i class="material-icons prefix">vpn_key</i>
 						{{form.password2}}
+						<b class="red-text">{{ form.password2.errors.as_text }}</b>
 						<label for="{{form.password2.auto_id}}">Confirme su contraseña</label>
 					</div>
 					<div class="col s12">
@@ -51,3 +56,14 @@
 			
 			{%endblock%}
 	
+
+{%block add_script%}
+	{% for field in form %}
+
+		{% if field.errors and field.name != 'password2' %}
+		M.toast({html: '{{ field.errors.as_text}}'})
+
+		{%endif%}
+	{% endfor %}
+	 
+{%endblock%}

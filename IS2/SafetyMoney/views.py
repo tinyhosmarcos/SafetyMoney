@@ -20,6 +20,7 @@ class IniciarSesion(View):
 	def get(self, request, *args, **kwargs):
 		form 								=IniciarSesionForm(request.POST)
 		self.context['form']				=form
+		self.context['iniciar_sesion']		=True
 		return render(request, self.template_name,self.context )
 
 	def post(self, request, *args, **kwargs):
@@ -38,6 +39,9 @@ class IniciarSesion(View):
 				do_login(request, user)
 				# Y le redireccionamos a la portada
 				return redirect('SafetyMoney:pagina_principal')
+		self.context['form']				=form
+		self.context['iniciar_sesion']		=False
+		return render(request, self.template_name,self.context )
 
 class PaginaPrincipal(View):
 	login_required = True
@@ -71,3 +75,5 @@ class ControlRegistro(View):
 				do_login(request, user)
 				# Y le redireccionamos a la portada
 				return redirect('SafetyMoney:iniciar_sesion')
+		self.context['form']				=form
+		return render(request, self.template_name,self.context )	
