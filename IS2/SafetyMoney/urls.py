@@ -9,5 +9,5 @@ urlpatterns = [
 	path('registrarse',views.ControlRegistro.as_view(),name='vista_registro'),
 	path('login/', auth_views.LoginView.as_view(template_name='SafetyMoney/iniciar_sesion.html'),name='login'),
 	path('logout/', auth_views.LogoutView.as_view(template_name='SafetyMoney/iniciar_sesion.html'),name='logout'),
-
+	path('cambiar_datos',views.ControlCuenta.as_view(),name='vista_cuenta'),
 ]

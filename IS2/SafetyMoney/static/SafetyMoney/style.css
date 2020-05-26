@@ -1,6 +1,15 @@
 {% load static %}
-.nav-wrapper.este{
-  background-color:#FF652F;
+body {
+    background-image: url('fondo_inicio_sesion.png');
+    height: 700px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.este{
+   background-color:#77DD77; 
+   box-shadow: none;
 }
 .material-icons.index{
 	background-color:#FF652F;
@@ -21,4 +30,10 @@
     top: 15%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+.sidenav  {
+    transform: translateX(0px);
+    margin-top: 64px;
+    border-right:2px solid rgba(0,0,0,0.14) ;
+    box-shadow:none;
 }

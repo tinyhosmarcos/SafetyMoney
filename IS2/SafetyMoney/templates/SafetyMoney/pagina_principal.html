@@ -28,8 +28,8 @@
 		<li><a href="#!">Mi Cuenta</a></li>
 		<li><a href="{%url 'SafetyMoney:logout'%}">Cerrar Sesión</a></li>
 	</ul>
-	<nav>
-		<div class="nav-wrapper container ">
+	<nav class="este">
+		<div class="nav-wrapper este container ">
 			<a href="#!" class="brand-logo center-align ">SafetyMoney</a>
 				<ul class="right hide-on-med-and-down">
 				<li><a href="{%url 'SafetyMoney:pagina_principal'%}">Pagina Principal</a></li>
@@ -45,11 +45,53 @@
 {%endblock%}
 
 	{%block section_1%}
-		<a onclick="M.toast()" class="btn">Toast!</a>
-	{%endblock%}
+
+	<div class=" row">
+		<div class=" col s3">
+
+		<ul id="slide-out" class="sidenav collapsible expandable ">
+			 <li class="cambiar"><a href="{%url 'SafetyMoney:vista_cuenta'%}" class="waves-effect waves-teal cambiar"><i class="material-icons">account_box</i>Cuenta</a></li>
+		 	</li>
+
+			<li>
+				<div class="collapsible-header"><i class="material-icons">attach_money</i>Ingresos</div>
+				<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+			</li>
+			<li>
+				<div class="collapsible-header"><i class="material-icons">add_shopping_cart</i>Gastos</div>
+				<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+			</li>
+			<li>
+				<div class="collapsible-header"><i class="material-icons">compare</i>Balance</div>
+				<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+			</li>
+			<li>
+				<div class="collapsible-header"><i class="material-icons">create_new_folder</i>Ahorros</div>
+				<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+			</li>
+			<li>
+				<div class="collapsible-header"><i class="material-icons">group</i>Grupos</div>
+				<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+			</li>
 		
-	{%block section_3%}	
+		</ul>
+		
+		</div>
+
+
+		
 	
+	{%endblock%}
+	{%block section_2%}	
+		<div class="section col s9">
+			<p>asdas</p>			
+		</div>
+
+	{%endblock%}
+
+	{%block section_3%}	
+	</div>
+        
 
 	{%endblock%}
 	<script type="text/javascript" src="{% static 'SafetyMoney/js/jquery-2.1.1.min.js' %}"></script>
@@ -57,10 +99,10 @@
 
 	 {%block scrip_text%}
 		<script type="text/javascript">
-			
-
 			$(document).ready(function(){
-					$(".dropdown-trigger").dropdown();
+					$('.dropdown-trigger').dropdown({
+						alignment:'right',
+					});
     				$('.sidenav').sidenav();
     				$('.slider').slider();
     				$('.tabs').tabs();
@@ -70,7 +112,9 @@
 		      			});
 
     		{%block add_script%}
-    		
+    				 $('.collapsible').collapsible({
+    				 	accordion: false
+    				 });
     		{%endblock%}		
 
     						});

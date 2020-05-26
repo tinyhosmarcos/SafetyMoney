@@ -77,3 +77,17 @@ class ControlRegistro(View):
 				return redirect('SafetyMoney:iniciar_sesion')
 		self.context['form']				=form
 		return render(request, self.template_name,self.context )	
+
+class ControlCuenta(View):
+	login_required=True
+	template_name = 'SafetyMoney/cambiar_datos.html'
+	context={
+
+	}
+	def get(self,request,*args,**kwargs):
+		form= CambiarDatosForm()
+		print(request.user)
+		account=User.objects.get(username=request.user)
+		self.context['form']				=form
+		self.context['account']				=account
+		return render(request, self.template_name,self.context )

@@ -1,0 +1,62 @@
+{%extends 'SafetyMoney/pagina_principal.html'%}
+{% load static %}
+{%block title%}Cambiar Datos{%endblock%}
+
+
+
+{%block section_2%}	
+		<div class="section col s9 center-align">
+			<h4>Cuenta</h4>
+			<div class="section container">
+				<form method="POST">
+					{%csrf_token%}
+				<div class="row">
+					<div class="input-field col s12">
+						<i class="material-icons prefix">assignment_ind</i>
+						 <input id="username" value="{{account.username}}" type="text" class="validate">
+						<label  for="username">Usuario</label>
+					</div>
+					<div class="input-field col s7">
+						<i class="material-icons prefix">account_circle</i>
+						<input id="first_name" value="{{account.first_name}}" type="text" class="validate">
+
+
+						<label for="first_name">Nombres</label>
+					</div>
+					<div class="input-field col s5">
+						<input id="last_name" value="{{account.last_name}}" type="text" class="validate">
+
+						<label for="last_name">Apellidos</label>
+					</div>
+					<div class="input-field col s12">
+						<i class="material-icons prefix">email</i>
+						<input id="email" value="{{account.email}}" type="text" class="validate">
+
+
+						<label for="email">Correo Electronico</label>
+					</div>
+					<div class="input-field col s12">
+						<i class="material-icons prefix">vpn_key</i>
+						<input id="password" type="text" class="validate">
+
+
+						<label for="password">Contraseña</label>
+					</div>
+					<div class="input-field col s12">
+						<i class="material-icons prefix">vpn_key</i>
+						<input id="first_name" value="{{account.username}}" type="text" class="validate">
+
+						<b class="red-text">{{ form.password2.errors.as_text }}</b>
+						<label for="{{form.password2.auto_id}}">Confirme su contraseña</label>
+					</div>
+					<div class="col s12">
+						<button class="btn waves-effect waves-light" type="submit" name="registrarse">Cambiar Datos
+ 			 			</button>
+					</div>
+				</div>
+			</form>
+			</div>
+			<p></p>
+		</div>
+
+	{%endblock%}
