@@ -10,4 +10,6 @@ urlpatterns = [
 	path('login/', auth_views.LoginView.as_view(template_name='SafetyMoney/iniciar_sesion.html'),name='login'),
 	path('logout/', auth_views.LogoutView.as_view(template_name='SafetyMoney/iniciar_sesion.html'),name='logout'),
 	path('cambiar_datos',views.ControlCuenta.as_view(),name='vista_cuenta'),
+	path('ingresos',views.ControlIngresos.as_view(),name='vista_ingresos'),
+	path('gastos',views.ControlGastos.as_view(),name='vista_gastos'),
 ]

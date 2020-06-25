@@ -10,6 +10,7 @@ from django.shortcuts import render,redirect
 from django.views import View
 from django.contrib.auth import login as do_login
 from django.views.generic.detail import DetailView
+from django.contrib.auth import update_session_auth_hash
 # Create your views here.
 class IniciarSesion(View):
 
@@ -85,9 +86,72 @@ class ControlCuenta(View):
 
 	}
 	def get(self,request,*args,**kwargs):
-		form= CambiarDatosForm()
-		print(request.user)
+		user=User.objects.get(id=request.user.id)
+		form= CambiarDatosForm(instance_user=user)
 		account=User.objects.get(username=request.user)
 		self.context['form']				=form
 		self.context['account']				=account
+		return render(request, self.template_name,self.context )
+
+	def post(self, request, *args, **kwargs):
+		user=User.objects.get(id=request.user.id)
+		account=User.objects.get(username=user.username)
+		form=CambiarDatosForm(request.POST)
+		if form.is_valid():
+			test=form.save()
+			user=User.objects.get(username=test)
+			update_session_auth_hash(request, user)
+			return redirect('SafetyMoney:vista_cuenta')
+		else: #Form is invalid
+			print (form.errors) #You have the error list here.
+		self.context['form']				=form
+		self.context['account']				=account
+		return render(request, self.template_name,self.context )
+
+class ControlIngresos(View):
+	login_required = True
+	template_name = 'SafetyMoney/ingresos.html'
+	context={
+
+	}
+	def get(self,request,*args,**kwargs):
+		user=User.objects.get(id=request.user.id)
+
+		form 						= 	AgregarIngresoForm(instance_user=user.id)
+		self.context['form']		=	form
+		return render(request, self.template_name,self.context )
+
+	def post(self, request, *args, **kwargs):
+		user=User.objects.get(id=request.user.id)
+		form 						=  AgregarIngresoForm(instance_user=user.id,data=request.POST)
+		if form.is_valid():
+			print(form)
+			print("es valido")
+			test=form.save()
+			return redirect('SafetyMoney:pagina_principal')
+		self.context['form']		=	form
+		return render(request, self.template_name,self.context )
+
+class ControlGastos(View):
+	login_required = True
+	template_name = 'SafetyMoney/gastos.html'
+	context={
+
+	}
+	def get(self,request,*args,**kwargs):
+		user=User.objects.get(id=request.user.id)
+
+		form 						= 	AgregarGastoForm(instance_user=user.id)
+		self.context['form']		=	form
+		return render(request, self.template_name,self.context )
+
+	def post(self, request, *args, **kwargs):
+		user=User.objects.get(id=request.user.id)
+		form 						=  AgregarGastoForm(instance_user=user.id,data=request.POST)
+		if form.is_valid():
+			print(form)
+			print("es valido")
+			test=form.save()
+			return redirect('SafetyMoney:pagina_principal')
+		self.context['form']		=	form
 		return render(request, self.template_name,self.context )
